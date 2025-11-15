@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border: solid 2px black;
+  height: 80px;
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+  color: white;
+  user-select: none;
+}

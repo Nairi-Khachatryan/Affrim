@@ -1,0 +1,16 @@
+export const ROUTES = {
+  HOME_PATH: '/',
+  TO_DO: '/to-do',
+  SIGN_IN: '/sign-in',
+  SIGN_UP: '/sign-up',
+  PROFILE: '/profile',
+  NOT_FOUND_PAGE: '*',
+  SETTINGS: '/settings',
+  DETAIL_INFO: '/detail-info',
+  EDIT_PROFILE: '/edit-profile',
+  CREATE_BLOCK: '/create-block',
+  CREATE_AVATAR: '/crate-avatar',
+  UPDATE_AVATAR: '/update-avatar',
+  ABOUT_OUR_PROJECT: '/about-our-project',
+  AVATAR_ITEM_MORE_INFO: '/avatar-item-more-info',
+} as const;
