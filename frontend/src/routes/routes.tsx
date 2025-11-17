@@ -1,5 +1,9 @@
+import { WidtdrawPassword } from '../pages/widtdrawPassword/WidtdrawPassword';
+import { ChangePassword } from '../pages/changePassword/ChangePassword';
 import { NotFoundPage } from '../components/notFoundPage/NotFoundPage';
 import { CheckInGift } from '../pages/checkInGift/CheckInGift';
+import { WitdrawList } from '../pages/WitdrawList/WitdrawList';
+import { AddBankCard } from '../pages/addBankCard/AddBankCard';
 import { Replenish } from '../pages/replenish/Replenish';
 import { createBrowserRouter } from 'react-router-dom';
 import { Widthraw } from '../pages/widthraw/Widthraw';
@@ -86,6 +90,22 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.REPLENISH,
             element: <Replenish />,
+          },
+          {
+            path: ROUTES.WIDTDRAW_PASSWORD,
+            element: <WidtdrawPassword />,
+          },
+          {
+            path: ROUTES.CHANGE_PASSWORD,
+            element: <ChangePassword />,
+          },
+          {
+            path: ROUTES.WIDTDRAW_LIST,
+            element: <WitdrawList />,
+          },
+          {
+            path: ROUTES.ADD_BANK_CARD,
+            element: <AddBankCard />,
           },
         ],
       },

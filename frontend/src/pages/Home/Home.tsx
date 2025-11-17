@@ -8,14 +8,16 @@ import { useNavigate } from 'react-router-dom';
 import credit from '../../../public/bank.png';
 import s from './Home.module.scss';
 import { Carousel } from 'antd';
+import { useAppSelector } from '../../app/hooks';
 
 export const Home = () => {
   const navigate = useNavigate();
-  
+  const ID = useAppSelector((user) => user.user.user.id);
+
   return (
     <div className={s.wrapper}>
       <div className={s.top}>
-        <h1>ID 454543</h1>
+        <h5>ID {ID}</h5>
         <div className={s.balance}>Balance 0</div>
       </div>
       <div className={s.carousel}>

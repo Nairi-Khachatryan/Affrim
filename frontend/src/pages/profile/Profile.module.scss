@@ -1,43 +1,37 @@
-.profile-wrapper {
-  display: flex;
-  justify-content: center;
-  padding: 24px;
-}
+.profile {
+  padding: 20px;
 
-.profile-card {
-  width: 100%;
-  max-width: 480px;
-  border-radius: 16px;
-}
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-.profile-id {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
+  .infoRow {
+    margin-bottom: 20px;
 
-.profile-stats {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-  border-radius: 12px;
-}
+    .infoCard {
+      text-align: center;
 
-.stat-item {
-  font-size: 14px;
-  flex: 1;
-  text-align: center;
-}
+      .infoLabel {
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
 
-.stat-divider {
-  width: 1px;
-  height: 32px;
-  background: #ddd;
-}
+      .infoValue {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
 
-.profile-actions .ant-list-item {
-  padding: 12px 0;
-  font-size: 14px;
-  border-bottom: 1px solid #f0f0f0;
+  .idCard {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .buttonRow {
+    button {
+      margin-bottom: 10px;
+    }
+  }
 }
