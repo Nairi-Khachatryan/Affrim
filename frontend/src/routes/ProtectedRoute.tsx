@@ -1,7 +1,6 @@
 import { Outlet, Navigate } from 'react-router-dom';
 import { ROUTES } from './routhPaths';
 // import { useAuth } from '../hooks/useAuth';
-// import { ROUTES } from './routhPath';
 
 const ProtectedRoute = () => {
   // const isAuth = useAuth();

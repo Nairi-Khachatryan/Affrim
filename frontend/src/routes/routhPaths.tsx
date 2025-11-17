@@ -8,5 +8,11 @@ export const ROUTES = {
   HAMSTER: '/hamster',
   MARKET: '/market',
   TEAM: '/team',
+  REPLENISH: '/replenish',
+  WIDTDRAW: '/widthdraw',
+  CREDIT: '/credit',
+  DEPOSIT: '/deposit',
+  SLOT: '/slot',
+  CHECK_IN_GIFT: '/check-in-gift',
   ABOUT_OUR_PROJECT: '/about-our-project',
 } as const;

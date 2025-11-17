@@ -11,6 +11,12 @@ import { Market } from '../pages/market/Market';
 import { Team } from '../pages/team/Team';
 import ProtectedRoute from './ProtectedRoute';
 import { NotFoundPage } from '../components/notFoundPage/NotFoundPage';
+import { Credit } from '../pages/credit/Credit';
+import { Deposit } from '../pages/deposit/Deposit';
+import { Slot } from '../pages/slot/Slot';
+import { CheckInGift } from '../pages/checkInGift/CheckInGift';
+import { Widthraw } from '../pages/widthraw/Widthraw';
+import { Replenish } from '../pages/replenish/Replenish';
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +62,30 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.TEAM,
             element: <Team />,
+          },
+          {
+            path: ROUTES.CREDIT,
+            element: <Credit />,
+          },
+          {
+            path: ROUTES.DEPOSIT,
+            element: <Deposit />,
+          },
+          {
+            path: ROUTES.SLOT,
+            element: <Slot />,
+          },
+          {
+            path: ROUTES.CHECK_IN_GIFT,
+            element: <CheckInGift />,
+          },
+          {
+            path: ROUTES.WIDTDRAW,
+            element: <Widthraw />,
+          },
+          {
+            path: ROUTES.REPLENISH,
+            element: <Replenish />,
           },
         ],
       },

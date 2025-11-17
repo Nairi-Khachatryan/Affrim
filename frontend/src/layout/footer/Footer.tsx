@@ -11,24 +11,27 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../routes/routhPaths';
 
 export const Footer = () => {
+  const size = {
+    fontSize: 24,
+  };
   const navigate = useNavigate();
   return (
     <div className={s.footer}>
       <div className={s.navbar}>
         <div onClick={() => navigate(ROUTES.HOME_PATH)} className={s.navItem}>
-          <HomeOutlined style={{ fontSize: 24 }} />
+          <HomeOutlined style={size} />
           <p>Home</p>
         </div>
         <div onClick={() => navigate(ROUTES.MARKET)} className={s.navItem}>
-          <ShoppingCartOutlined style={{ fontSize: 24 }} />
+          <ShoppingCartOutlined style={size} />
           <p>Shop</p>
         </div>
         <div onClick={() => navigate(ROUTES.GIFT)} className={s.navItem}>
-          <GiftOutlined style={{ fontSize: 24 }} />
+          <GiftOutlined style={size} />
           <p>Gift</p>
         </div>
         <div onClick={() => navigate(ROUTES.TEAM)} className={s.navItem}>
-          <TeamOutlined style={{ fontSize: 24 }} />
+          <TeamOutlined style={size} />
           <p>Team</p>
         </div>
         <div onClick={() => navigate(ROUTES.HAMSTER)} className={s.navItem}>
@@ -36,7 +39,7 @@ export const Footer = () => {
           <p>Hamster</p>
         </div>
         <div onClick={() => navigate(ROUTES.PROFILE)} className={s.navItem}>
-          <UserOutlined style={{ fontSize: 24 }} />
+          <UserOutlined style={size} />
           <p>Profile</p>
         </div>
       </div>
