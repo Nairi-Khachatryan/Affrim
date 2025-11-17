@@ -1,11 +1,11 @@
-// import { signInUser } from '../../../api/auth/authApi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signInUser } from '../../../api/auth/SignInUser';
 // import { useAppDispatch } from '../../../app/hooks';
 import { ROUTES } from '../../../routes/routhPaths';
 // import { useToast } from '../../../hooks/useToast';
 import type { FieldType } from './SignIn.types';
 import { useForm } from 'antd/es/form/Form';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, InputNumber } from 'antd';
 import React, { useState } from 'react';
 import type { FormProps } from 'antd';
 import s from './SignIn.module.scss';
@@ -14,7 +14,7 @@ export const SignIn: React.FC = () => {
   const [loading, setLoading] = useState(false);
   // const dispatch = useAppDispatch();
   // const { showToast } = useToast();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [form] = useForm();
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
@@ -23,12 +23,19 @@ export const SignIn: React.FC = () => {
 
     // const res = await dispatch(signInUser(values)).unwrap();
 
-    // if (!res.success) {
-    //   setLoading(false);
-    //   return showToast({ type: 'error', message: res.message });
-    // }
+    const res = await signInUser(values);
 
-    // navigate(ROUTES.HOME_PATH);
+    if (!res.success) {
+      // setLoading(false);
+      console.log(res.message);
+      return;
+
+      // return showToast({ type: 'error', message: res.message });
+    }
+
+    console.log(res.message);
+
+    navigate(ROUTES.HOME_PATH);
     // showToast({ type: 'success', message: res.message });
     // setLoading(false);
   };
@@ -52,17 +59,20 @@ export const SignIn: React.FC = () => {
           </div>
 
           <Form.Item<FieldType>
-            label="Email"
+            label="Phone"
             name="phone"
             rules={[
               {
                 required: true,
                 message: 'Please input your Phone',
-                type: 'number',
               },
             ]}
           >
-            <Input autoComplete="username" className={s.input} />
+            <InputNumber
+              autoComplete="userphone"
+              className={s.input}
+              style={{ width: '100%' }}
+            />
           </Form.Item>
 
           <Form.Item<FieldType>

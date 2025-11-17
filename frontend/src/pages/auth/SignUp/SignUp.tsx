@@ -1,6 +1,6 @@
-// import { createUser } from '../../../api/auth/authApi';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { Link } from 'react-router-dom';
+import { createUser } from '../../../api/auth/createUser';
+import { Button, Checkbox, Form, Input, InputNumber } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 // import { useAppDispatch } from '../../../app/hooks';
 import { ROUTES } from '../../../routes/routhPaths';
 // import { useToast } from '../../../hooks/useToast';
@@ -16,7 +16,7 @@ export const SignUp: React.FC = () => {
   const [error, setError] = useState('');
   // const dispatch = useAppDispatch();
   // const { showToast } = useToast();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [form] = useForm();
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
@@ -34,12 +34,17 @@ export const SignUp: React.FC = () => {
     setError('');
     // const res = await dispatch(createUser({ email, password })).unwrap();
 
-    // if (!res.success) {
-    //   setLoading(false);
-    //   return showToast({ type: 'error', message: res.message });
-    // }
+    const res = await createUser(values);
 
-    // navigate(ROUTES.HOME_PATH);
+    if (!res.success) {
+      // setLoading(false);
+      console.log('error', res.message);
+      // return showToast({ type: 'error', message: res.message });
+    }
+
+    console.log(res.message);
+
+    navigate(ROUTES.HOME_PATH);
     // showToast({ type: 'success', message: res.message });
     // setLoading(false);
   };
@@ -91,15 +96,13 @@ export const SignUp: React.FC = () => {
           <Form.Item<FieldType>
             label="Phone"
             name="phone"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your phone!',
-                type: 'number',
-              },
-            ]}
+            rules={[{ required: true, message: 'Please input your phone!' }]}
           >
-            <Input autoComplete="username" className={s.input} />
+            <InputNumber
+              autoComplete="userphone"
+              className={s.input}
+              style={{ width: '100%' }}
+            />
           </Form.Item>
 
           <Form.Item<FieldType>
