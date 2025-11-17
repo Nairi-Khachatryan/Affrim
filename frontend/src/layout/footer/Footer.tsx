@@ -1,3 +1,6 @@
+import { ROUTES } from '../../routes/routhPaths';
+import { useNavigate } from 'react-router-dom';
+import { FaGithub } from 'react-icons/fa';
 import s from './Footer.module.scss';
 import {
   HomeOutlined,
@@ -6,9 +9,6 @@ import {
   UserOutlined,
   ShoppingCartOutlined,
 } from '@ant-design/icons';
-import { FaGithub } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../routes/routhPaths';
 
 export const Footer = () => {
   const size = {

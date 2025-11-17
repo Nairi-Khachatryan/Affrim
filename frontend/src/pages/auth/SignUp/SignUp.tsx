@@ -1,11 +1,10 @@
-import { createUser } from '../../../api/auth/createUser';
 import { Button, Checkbox, Form, Input, InputNumber } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
-// import { useAppDispatch } from '../../../app/hooks';
-import { ROUTES } from '../../../routes/routhPaths';
+import { createUser } from '../../../api/auth/createUser';
 // import { useToast } from '../../../hooks/useToast';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../app/hooks';
+import { ROUTES } from '../../../routes/routhPaths';
 import type { FieldType } from './SignUp.types';
-
 import { useForm } from 'antd/es/form/Form';
 import React, { useState } from 'react';
 import type { FormProps } from 'antd';
@@ -14,7 +13,7 @@ import s from './SignUp.module.scss';
 export const SignUp: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   // const { showToast } = useToast();
   const navigate = useNavigate();
   const [form] = useForm();
@@ -32,21 +31,17 @@ export const SignUp: React.FC = () => {
     }
 
     setError('');
-    // const res = await dispatch(createUser({ email, password })).unwrap();
-
-    const res = await createUser(values);
+    const res = await dispatch(createUser(values)).unwrap();
 
     if (!res.success) {
-      // setLoading(false);
+      setLoading(false);
       console.log('error', res.message);
       // return showToast({ type: 'error', message: res.message });
     }
 
-    console.log(res.message);
-
     navigate(ROUTES.HOME_PATH);
     // showToast({ type: 'success', message: res.message });
-    // setLoading(false);
+    setLoading(false);
   };
 
   return (

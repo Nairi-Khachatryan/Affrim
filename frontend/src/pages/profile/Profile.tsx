@@ -1,5 +1,5 @@
-import { Tabs, Card } from "antd";
 import type { TabsProps } from "antd";
+import { Tabs, Card } from "antd";
 
 export const Profile = () => {
   const items: TabsProps["items"] = [

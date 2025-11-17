@@ -1,16 +1,17 @@
-import { Carousel } from 'antd';
-import s from './Home.module.scss';
+import replenish from '../../../public/money-back-guarantee.png';
 import slotImg from '../../../public/arcade-machine.png';
 import pigImg from '../../../public/piggy-bank.png';
-import replenish from '../../../public/money-back-guarantee.png';
-import widthraw from '../../../public/salary.png';
 import checkIn from '../../../public/check-in.png';
-import credit from '../../../public/bank.png';
-import { useNavigate } from 'react-router-dom';
+import widthraw from '../../../public/salary.png';
 import { ROUTES } from '../../routes/routhPaths';
+import { useNavigate } from 'react-router-dom';
+import credit from '../../../public/bank.png';
+import s from './Home.module.scss';
+import { Carousel } from 'antd';
 
 export const Home = () => {
   const navigate = useNavigate();
+  
   return (
     <div className={s.wrapper}>
       <div className={s.top}>

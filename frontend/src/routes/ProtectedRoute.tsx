@@ -1,10 +1,9 @@
 import { Outlet, Navigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 import { ROUTES } from './routhPaths';
-// import { useAuth } from '../hooks/useAuth';
 
 const ProtectedRoute = () => {
-  // const isAuth = useAuth();
-  const isAuth = true;
+  const isAuth = useAuth();
 
   if (!isAuth) {
     return <Navigate to={ROUTES.SIGN_IN} replace />;

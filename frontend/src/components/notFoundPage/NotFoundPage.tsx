@@ -1,8 +1,8 @@
+import { ROUTES } from '../../routes/routhPaths';
 import { useNavigate } from 'react-router-dom';
 import s from './NotFound.module.scss';
 import type React from 'react';
 import { Button } from 'antd';
-import { ROUTES } from '../../routes/routhPaths';
 
 export const NotFoundPage: React.FC = () => {
   const navigate = useNavigate();

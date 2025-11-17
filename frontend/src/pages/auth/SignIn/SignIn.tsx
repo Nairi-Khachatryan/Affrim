@@ -1,32 +1,29 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { signInUser } from '../../../api/auth/SignInUser';
-// import { useAppDispatch } from '../../../app/hooks';
-import { ROUTES } from '../../../routes/routhPaths';
+import { signInUser } from '../../../api/auth/logInUser';
+import { Button, Form, Input, InputNumber } from 'antd';
 // import { useToast } from '../../../hooks/useToast';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../app/hooks';
+import { ROUTES } from '../../../routes/routhPaths';
 import type { FieldType } from './SignIn.types';
 import { useForm } from 'antd/es/form/Form';
-import { Button, Form, Input, InputNumber } from 'antd';
 import React, { useState } from 'react';
 import type { FormProps } from 'antd';
 import s from './SignIn.module.scss';
 
 export const SignIn: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   // const { showToast } = useToast();
   const navigate = useNavigate();
   const [form] = useForm();
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
     setLoading(true);
-    console.log(values);
 
-    // const res = await dispatch(signInUser(values)).unwrap();
-
-    const res = await signInUser(values);
+    const res = await dispatch(signInUser(values)).unwrap();
 
     if (!res.success) {
-      // setLoading(false);
+      setLoading(false);
       console.log(res.message);
       return;
 
@@ -37,7 +34,7 @@ export const SignIn: React.FC = () => {
 
     navigate(ROUTES.HOME_PATH);
     // showToast({ type: 'success', message: res.message });
-    // setLoading(false);
+    setLoading(false);
   };
 
   return (

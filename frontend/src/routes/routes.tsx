@@ -1,22 +1,22 @@
+import { NotFoundPage } from '../components/notFoundPage/NotFoundPage';
+import { CheckInGift } from '../pages/checkInGift/CheckInGift';
+import { Replenish } from '../pages/replenish/Replenish';
 import { createBrowserRouter } from 'react-router-dom';
-import { ROUTES } from './routhPaths';
-import { AppLayout } from '../layout/AppLayout';
-import { Home } from '../pages/Home/Home';
+import { Widthraw } from '../pages/widthraw/Widthraw';
 import { SignIn } from '../pages/auth/SignIn/SignIn';
 import { SignUp } from '../pages/auth/SignUp/SignUp';
 import { Profile } from '../pages/profile/Profile';
 import { Hamster } from '../pages/hamster/Hamster';
-import { Gift } from '../pages/gift/Gift';
-import { Market } from '../pages/market/Market';
-import { Team } from '../pages/team/Team';
-import ProtectedRoute from './ProtectedRoute';
-import { NotFoundPage } from '../components/notFoundPage/NotFoundPage';
-import { Credit } from '../pages/credit/Credit';
 import { Deposit } from '../pages/deposit/Deposit';
+import { Market } from '../pages/market/Market';
+import { AppLayout } from '../layout/AppLayout';
+import { Credit } from '../pages/credit/Credit';
+import ProtectedRoute from './ProtectedRoute';
+import { Gift } from '../pages/gift/Gift';
+import { Home } from '../pages/Home/Home';
+import { Team } from '../pages/team/Team';
 import { Slot } from '../pages/slot/Slot';
-import { CheckInGift } from '../pages/checkInGift/CheckInGift';
-import { Widthraw } from '../pages/widthraw/Widthraw';
-import { Replenish } from '../pages/replenish/Replenish';
+import { ROUTES } from './routhPaths';
 
 export const router = createBrowserRouter([
   {

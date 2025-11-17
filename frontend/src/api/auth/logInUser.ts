@@ -1,17 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { API_AUTH } from '../../routes/urlPaths';
 
-type createUserParams = {
-  name: string;
-  surname: string;
+type signInReqParams = {
   phone: number;
   password: string;
 };
 
-type createUserResponce = {
+type signInResponce = {
   success: boolean;
   message: string;
-  data?: {
+  data: {
     name: string;
     surname: string;
     phone: number;
@@ -19,15 +17,15 @@ type createUserResponce = {
   };
 };
 
-export const createUser = createAsyncThunk(
-  'user/createUser',
-  async (values: createUserParams) => {
-    const res = await fetch(`${API_AUTH}/signUp`, {
+export const signInUser = createAsyncThunk(
+  'user/signIn',
+  async (userData: signInReqParams) => {
+    const res = await fetch(`${API_AUTH}/signIn`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(values),
+      body: JSON.stringify(userData),
     });
 
-    return (await res.json()) as createUserResponce;
+    return (await res.json()) as signInResponce;
   }
 );
