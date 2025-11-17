@@ -1,11 +1,11 @@
+import storageSession from 'redux-persist/lib/storage/session';
 import userReducer from '../features/user/userSlice';
-import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import { combineReducers } from 'redux';
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: storageSession, //delete user data after close browser
   whitelist: ['user'],
 };
 
