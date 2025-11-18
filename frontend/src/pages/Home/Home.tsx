@@ -1,14 +1,8 @@
-import replenish from '../../../public/money-back-guarantee.png';
-import slotImg from '../../../public/arcade-machine.png';
-import pigImg from '../../../public/piggy-bank.png';
-import checkIn from '../../../public/check-in.png';
-import widthraw from '../../../public/salary.png';
+import { useAppSelector } from '../../app/hooks';
 import { ROUTES } from '../../routes/routhPaths';
 import { useNavigate } from 'react-router-dom';
-import credit from '../../../public/bank.png';
 import s from './Home.module.scss';
 import { Carousel } from 'antd';
-import { useAppSelector } from '../../app/hooks';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -39,30 +33,34 @@ export const Home = () => {
 
       <div className={s.row}>
         <div onClick={() => navigate(ROUTES.REPLENISH)} className={s.item}>
-          <img className={s.images} src={replenish} alt="" />
+          <img
+            className={s.images}
+            src="/money-back-guarantee.png"
+            alt="maoney"
+          />
           <p>replenish</p>
         </div>
         <div onClick={() => navigate(ROUTES.WIDTDRAW)} className={s.item}>
-          <img className={s.images} src={widthraw} alt="" />
+          <img className={s.images} src="/salary.png" alt="widtdraw" />
           <p>withdraw</p>
         </div>
         <div onClick={() => navigate(ROUTES.CHECK_IN_GIFT)} className={s.item}>
-          <img className={s.images} src={checkIn} alt="checkIn" />
+          <img className={s.images} src="/check-in.png" alt="checkIn" />
           <p>check in gift</p>
         </div>
       </div>
 
       <div className={s.row}>
         <div onClick={() => navigate(ROUTES.DEPOSIT)} className={s.item}>
-          <img className={s.pigImg} src={pigImg} alt="pig" />
+          <img className={s.pigImg} src="/piggy-bank.png" alt="pig" />
           <p>deposit</p>
         </div>
         <div onClick={() => navigate(ROUTES.SLOT)} className={s.item}>
-          <img className={s.slotImg} src={slotImg} alt="slot" />
+          <img className={s.slotImg} src="/arcade-machine.png" alt="slot" />
           <p>Slot</p>
         </div>
         <div onClick={() => navigate(ROUTES.CREDIT)} className={s.item}>
-          <img className={s.images} src={credit} alt="credit" />
+          <img className={s.images} src="/bank.png" alt="credit" />
           <p>credit</p>
         </div>
       </div>
