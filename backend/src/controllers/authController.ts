@@ -22,6 +22,7 @@ export const signUp = async (req: Request, res: Response) => {
       surname,
       phone,
       passwordHash,
+      hamsterClickCount: 0,
     });
 
     await user.save();

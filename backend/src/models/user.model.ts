@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema(
       required: true,
       type: String,
     },
+    hamsterClickCount: {
+      required: true,
+      type: Number,
+    },
   },
   { timestamps: true }
 );
