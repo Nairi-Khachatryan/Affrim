@@ -1,6 +1,6 @@
 import { signInUser } from '../../../api/auth/logInUser';
 import { Button, Form, Input, InputNumber } from 'antd';
-// import { useToast } from '../../../hooks/useToast';
+import { useToast } from '../../../hooks/useToast';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../app/hooks';
 import { ROUTES } from '../../../routes/routhPaths';
@@ -13,7 +13,7 @@ import s from './SignIn.module.scss';
 export const SignIn: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
-  // const { showToast } = useToast();
+  const { showToast } = useToast();
   const navigate = useNavigate();
   const [form] = useForm();
 
@@ -24,16 +24,11 @@ export const SignIn: React.FC = () => {
 
     if (!res.success) {
       setLoading(false);
-      console.log(res.message);
-      return;
-
-      // return showToast({ type: 'error', message: res.message });
+      return showToast({ type: 'error', message: res.message });
     }
 
-    console.log(res.message);
-
     navigate(ROUTES.HOME_PATH);
-    // showToast({ type: 'success', message: res.message });
+    showToast({ type: 'success', message: res.message });
     setLoading(false);
   };
 

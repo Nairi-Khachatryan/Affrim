@@ -11,7 +11,7 @@ export const signUp = async (req: Request, res: Response) => {
     if (condidate) {
       return res.status(409).json({
         success: false,
-        message: `Account with this phone (${phone}) already exists`,
+        message: `Account with this phone number ( ${phone} ) already exists`,
       });
     }
 
@@ -54,7 +54,7 @@ export const signIn = async (req: Request, res: Response) => {
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: `Wrong Phone: ${phone} or Password: ${password}`,
+        message: `Wrong Phone : ${phone} or Password : ${password}`,
       });
     }
 
@@ -63,7 +63,7 @@ export const signIn = async (req: Request, res: Response) => {
     if (!isMatch) {
       return res.status(401).json({
         success: false,
-        message: `Wrong Phone${phone} or Password${password}`,
+        message: `Wrong Phone ${phone} or Password ${password}`,
       });
     }
 

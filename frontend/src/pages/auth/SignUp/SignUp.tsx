@@ -1,6 +1,6 @@
 import { Button, Checkbox, Form, Input, InputNumber } from 'antd';
 import { createUser } from '../../../api/auth/createUser';
-// import { useToast } from '../../../hooks/useToast';
+import { useToast } from '../../../hooks/useToast';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../app/hooks';
 import { ROUTES } from '../../../routes/routhPaths';
@@ -14,7 +14,7 @@ export const SignUp: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const dispatch = useAppDispatch();
-  // const { showToast } = useToast();
+  const { showToast } = useToast();
   const navigate = useNavigate();
   const [form] = useForm();
 
@@ -24,7 +24,7 @@ export const SignUp: React.FC = () => {
 
     if (password !== confirmPassword) {
       setError('Passwords don’t match.');
-      // showToast({ type: 'error', message: 'Passwords don’t match.' });
+      showToast({ type: 'error', message: 'Passwords don’t match.' });
       form.resetFields(['password', 'confirmPassword']);
       setLoading(false);
       return;
@@ -35,12 +35,11 @@ export const SignUp: React.FC = () => {
 
     if (!res.success) {
       setLoading(false);
-      console.log('error', res.message);
-      // return showToast({ type: 'error', message: res.message });
+      return showToast({ type: 'error', message: res.message });
     }
 
     navigate(ROUTES.HOME_PATH);
-    // showToast({ type: 'success', message: res.message });
+    showToast({ type: 'success', message: res.message });
     setLoading(false);
   };
 
