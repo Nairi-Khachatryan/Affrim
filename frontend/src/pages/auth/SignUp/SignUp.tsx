@@ -9,6 +9,7 @@ import { useForm } from 'antd/es/form/Form';
 import React, { useState } from 'react';
 import type { FormProps } from 'antd';
 import s from './SignUp.module.scss';
+import { useLocation } from 'react-router-dom';
 
 export const SignUp: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +18,10 @@ export const SignUp: React.FC = () => {
   const { showToast } = useToast();
   const navigate = useNavigate();
   const [form] = useForm();
+  const location = useLocation();
+
+  const params = new URLSearchParams(location.search);
+  const referralCodeFromUrl = params.get('ref');
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
     const { password, confirmPassword } = values;
@@ -31,7 +36,14 @@ export const SignUp: React.FC = () => {
     }
 
     setError('');
-    const res = await dispatch(createUser(values)).unwrap();
+
+    const payload = {
+      ...values,
+      ref: referralCodeFromUrl || undefined,
+    };
+
+    
+    const res = await dispatch(createUser(payload)).unwrap();
 
     if (!res.success) {
       setLoading(false);

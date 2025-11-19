@@ -1,14 +1,15 @@
+// import { rewardReferral } from "../utils/rewardReferral";
 import type { Request, Response } from 'express';
 import { User } from '../models/user.model';
+import { nanoid } from 'nanoid';
 import bcrypt from 'bcrypt';
 
 export const signUp = async (req: Request, res: Response) => {
-  const { name, surname, phone, password } = req.body;
+  const { name, surname, phone, password, ref } = req.body;
 
   try {
-    const condidate = await User.findOne({ phone });
-
-    if (condidate) {
+    const candidate = await User.findOne({ phone });
+    if (candidate) {
       return res.status(409).json({
         success: false,
         message: `Account with this phone number ( ${phone} ) already exists`,
@@ -17,15 +18,51 @@ export const signUp = async (req: Request, res: Response) => {
 
     const passwordHash = await bcrypt.hash(password, 8);
 
+    // Генерация уникального реферального кода
+    const referralCode = nanoid(8); // 8 символов
+
+    let referredBy = null;
+
+    // Если пришёл реферальный код, ищем пользователя
+    if (ref) {
+      const refUser = await User.findOne({ referralCode: ref });
+      if (refUser) {
+        referredBy = refUser._id;
+      }
+    }
+
+    const forwarded = req.headers['x-forwarded-for'];
+    const ip =
+      (typeof forwarded === 'string'
+        ? forwarded.split(',')[0]
+        : Array.isArray(forwarded)
+        ? forwarded[0]
+        : null) || req.socket.remoteAddress;
+
     const user = new User({
       name,
       surname,
       phone,
       passwordHash,
       hamsterClickCount: 0,
+      referrals: [],
+      referralCode,
+      referredBy,
+      balance: 0,
+      registrationIp: ip,
     });
 
+    console.log(ip, 'ip ad');
+
     await user.save();
+
+    if (referredBy) {
+      await User.findByIdAndUpdate(referredBy, {
+        $push: { referrals: user._id },
+      });
+
+      // await rewardReferral(user._id);
+    }
 
     res.status(201).json({
       success: true,
@@ -35,6 +72,7 @@ export const signUp = async (req: Request, res: Response) => {
         name,
         surname,
         id: user._id,
+        referralCode,
       },
     });
   } catch (error) {
@@ -46,6 +84,7 @@ export const signUp = async (req: Request, res: Response) => {
     });
   }
 };
+
 export const signIn = async (req: Request, res: Response) => {
   const { phone, password } = req.body;
 
@@ -76,6 +115,7 @@ export const signIn = async (req: Request, res: Response) => {
         surname: user.surname,
         id: user._id,
         phone: user.phone,
+        referralCode: user.referralCode,
       },
     });
   } catch (error) {

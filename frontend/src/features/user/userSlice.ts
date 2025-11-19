@@ -7,6 +7,7 @@ interface UserState {
   name: string | null;
   surname: string | null;
   phone: number | null;
+  referralCode: string | null;
 }
 
 const initialState: UserState = {
@@ -14,6 +15,7 @@ const initialState: UserState = {
   name: null,
   surname: null,
   phone: null,
+  referralCode: null,
 };
 
 const userSlice = createSlice({
@@ -32,6 +34,7 @@ const userSlice = createSlice({
           state.id = action.payload.data.id;
           state.name = action.payload.data.name;
           state.surname = action.payload.data.surname;
+          state.referralCode = action.payload.data.referralCode;
         }
       })
       .addCase(signInUser.fulfilled, (state, action) => {
@@ -40,6 +43,7 @@ const userSlice = createSlice({
           state.id = action.payload.data.id;
           state.name = action.payload.data.name;
           state.surname = action.payload.data.surname;
+          state.referralCode = action.payload.data.referralCode;
         }
       });
   },

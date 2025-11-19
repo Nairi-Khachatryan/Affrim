@@ -16,6 +16,7 @@ type createUserResponce = {
     surname: string;
     phone: number;
     id: string;
+    referralCode: string;
   };
 };
 
