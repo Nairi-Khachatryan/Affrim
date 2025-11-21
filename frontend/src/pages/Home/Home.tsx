@@ -3,10 +3,18 @@ import { ROUTES } from '../../routes/routhPaths';
 import { useNavigate } from 'react-router-dom';
 import s from './Home.module.scss';
 import { Carousel } from 'antd';
+import ring from '../../assets/ring.webp';
+import headphones from '../../assets/headphones.jpg';
+import coffe from '../../assets/coffe.webp';
+import shoes from '../../assets/shoes.avif';
+// import bag from '../../assets/bag3.jpg';
+import watch from '../../assets/watch.avif';
 
 export const Home = () => {
   const navigate = useNavigate();
   const ID = useAppSelector((user) => user.user.user.id);
+
+  const carouselImages = [ring, headphones, coffe, shoes, watch];
 
   return (
     <div className={s.wrapper}>
@@ -14,20 +22,14 @@ export const Home = () => {
         <h5>ID {ID}</h5>
         <div className={s.balance}>Balance 0</div>
       </div>
+
       <div className={s.carousel}>
         <Carousel autoplay>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
+          {carouselImages.map((img, index) => (
+            <div key={index} className={s.carouselItem}>
+              <img className={s.carouselImg} src={img} alt={`slide-${index}`} />
+            </div>
+          ))}
         </Carousel>
       </div>
 
@@ -36,12 +38,12 @@ export const Home = () => {
           <img
             className={s.images}
             src="/money-back-guarantee.png"
-            alt="maoney"
+            alt="money"
           />
           <p>replenish</p>
         </div>
         <div onClick={() => navigate(ROUTES.WIDTDRAW)} className={s.item}>
-          <img className={s.images} src="/salary.png" alt="widtdraw" />
+          <img className={s.images} src="/salary.png" alt="withdraw" />
           <p>withdraw</p>
         </div>
         <div onClick={() => navigate(ROUTES.CHECK_IN_GIFT)} className={s.item}>
