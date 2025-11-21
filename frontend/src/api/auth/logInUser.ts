@@ -15,6 +15,7 @@ type signInResponce = {
     phone: number;
     id: string;
     referralCode: string;
+    referrals: Array<string>;
   };
 };
 

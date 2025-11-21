@@ -1,4 +1,6 @@
+import { refferalsRoute } from './routes/refferalsRoute';
 import { hamsterRouter } from './routes/hamsterRouter';
+import { userRouter } from './routes/userRouter';
 import { authRouter } from './routes/authRoutes';
 import { connectDb } from './config/db';
 import express from 'express';
@@ -14,6 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/auth', authRouter);
 app.use('/hamster', hamsterRouter);
+app.use('/referrals', refferalsRoute);
+app.use('/user', userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening at Port ${PORT}`);

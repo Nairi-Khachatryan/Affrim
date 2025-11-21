@@ -18,12 +18,11 @@ export const signUp = async (req: Request, res: Response) => {
 
     const passwordHash = await bcrypt.hash(password, 8);
 
-    // Генерация уникального реферального кода
-    const referralCode = nanoid(8); // 8 символов
+    const referralCode = nanoid(8);
 
     let referredBy = null;
+    const referrals: Array<string> = [];
 
-    // Если пришёл реферальный код, ищем пользователя
     if (ref) {
       const refUser = await User.findOne({ referralCode: ref });
       if (refUser) {
@@ -45,14 +44,12 @@ export const signUp = async (req: Request, res: Response) => {
       phone,
       passwordHash,
       hamsterClickCount: 0,
-      referrals: [],
+      referrals,
       referralCode,
       referredBy,
       balance: 0,
       registrationIp: ip,
     });
-
-    console.log(ip, 'ip ad');
 
     await user.save();
 
@@ -73,6 +70,7 @@ export const signUp = async (req: Request, res: Response) => {
         surname,
         id: user._id,
         referralCode,
+        referrals,
       },
     });
   } catch (error) {
@@ -116,6 +114,7 @@ export const signIn = async (req: Request, res: Response) => {
         id: user._id,
         phone: user.phone,
         referralCode: user.referralCode,
+        referrals: user.referrals,
       },
     });
   } catch (error) {

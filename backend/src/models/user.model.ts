@@ -42,7 +42,8 @@ const userSchema = new mongoose.Schema(
     // список рефералов
     referrals: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
+        // type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
       },
     ],
