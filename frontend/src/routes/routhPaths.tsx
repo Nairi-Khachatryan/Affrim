@@ -14,9 +14,9 @@ export const ROUTES = {
   WIDTDRAW: '/widthdraw',
   REPLENISH: '/replenish',
   CHECK_IN_GIFT: '/check-in-gift',
-  ABOUT_OUR_PROJECT: '/about-our-project',
   ADD_BANK_CARD: '/add-bank-card',
   WIDTDRAW_LIST: '/widtdraw-list',
   CHANGE_PASSWORD: '/change-password',
+  ABOUT_OUR_PROJECT: '/about-our-project',
   WIDTDRAW_PASSWORD: '/widtdraw-password',
 } as const;

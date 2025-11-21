@@ -22,7 +22,7 @@ export const Gift: React.FC = () => {
       setTimeout(() => {
         setIsConfetti(false);
         message.success(`Поздравляем! Вы получили подарок #${index + 1}!`);
-      }, 4000);
+      }, 5000);
     }, 900); 
   };
 

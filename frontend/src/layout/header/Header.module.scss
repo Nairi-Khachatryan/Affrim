@@ -25,3 +25,20 @@
   height: 50px;
   background: linear-gradient(135deg, #2a5298, #1e3c72);
 }
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  cursor: pointer;
+  border-radius: 40px;
+  width: 120px;
+  margin-left: 20px;
+  margin-top: 4px;
+  user-select: none;
+}

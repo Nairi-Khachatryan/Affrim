@@ -1,6 +1,6 @@
 import { removeUser } from '../../features/user/userSlice';
 import { ROUTES } from '../../routes/routhPaths';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useNavigate } from 'react-router-dom';
 import { Card, Button, Row, Col } from 'antd';
 import s from './Profile.module.scss';
@@ -8,6 +8,7 @@ import s from './Profile.module.scss';
 export const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const userId = useAppSelector((state) => state.user.user.id);
 
   return (
     <div className={s.profile}>
@@ -36,7 +37,7 @@ export const Profile = () => {
 
       <Card className={s.idCard}>
         <h2>ID</h2>
-        <div>12345</div>
+        <div>{userId}</div>
       </Card>
 
       <Row gutter={[16, 16]} className={s.buttonRow}>
