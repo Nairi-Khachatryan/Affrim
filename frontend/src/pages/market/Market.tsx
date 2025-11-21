@@ -17,25 +17,27 @@ export const Market: React.FC = () => {
   ];
 
   return (
-    <Row gutter={[16, 16]}>
-      {marketItems.map((item, idx) => (
-        <Col key={idx} xs={24} sm={12} md={8} lg={6} xl={4}>
-          <Card hoverable className={s.marketCard}>
-            {/* Label сверху */}
-            <div className={s.marketLabel}>{item.label}</div>
+    <div className={s.marketContainer}>
+      <Row gutter={[16, 16]}>
+        {marketItems.map((item, idx) => (
+          <Col key={idx} xs={24} sm={12} md={8} lg={6} xl={4}>
+            <Card hoverable className={s.marketCard}>
+              {/* Label сверху */}
+              <div className={s.marketLabel}>{item.label}</div>
 
-            {/* Картинка */}
-            <img alt={item.name} src={item.img} className={s.marketImg} />
+              {/* Картинка */}
+              <img alt={item.name} src={item.img} className={s.marketImg} />
 
-            {/* Контент снизу */}
-            <div className={s.marketContent}>
-              <div className={s.marketName}>{item.name}</div>
-              <div className={s.marketName}>Price: {item.price}</div>
-              <div className={s.marketDesc}>Осталось 50</div>
-            </div>
-          </Card>
-        </Col>
-      ))}
-    </Row>
+              {/* Контент снизу */}
+              <div className={s.marketContent}>
+                <div className={s.marketName}>{item.name}</div>
+                <div className={s.marketName}>Price: {item.price}</div>
+                <div className={s.marketDesc}>Осталось 50</div>
+              </div>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </div>
   );
 };

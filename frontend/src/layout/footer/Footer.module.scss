@@ -1,19 +1,21 @@
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 80px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  border: solid 2px black;
-  height: 80px;
   background: linear-gradient(135deg, #2a5298, #1e3c72);
   color: white;
+  border-top: 2px solid black;
   user-select: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 999; /* чтобы не перекрывался */
+  box-sizing: border-box; /* чтобы border не ломал ширину */
+  padding-bottom: env(safe-area-inset-bottom); /* важно для iPhone */
 }
-
 .navbar {
   width: 700px;
   height: 70px;

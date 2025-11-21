@@ -1,3 +1,8 @@
+.marketContainer {
+  min-height: 100vh; /* вместо height */
+  margin-bottom: 80px;
+  
+}
 .marketCard {
   height: 400px;
   border-radius: 12px;

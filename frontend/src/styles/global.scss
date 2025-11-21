@@ -8,6 +8,11 @@ body {
   font-family: 'Courier New';
 }
 
+
+#root {
+  flex: 1; /* основное содержимое растягивается */
+}
+
 .container {
   max-width: 100%;
   margin: 0 auto;
