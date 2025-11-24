@@ -71,6 +71,7 @@ export const signUp = async (req: Request, res: Response) => {
         id: user._id,
         referralCode,
         referrals,
+        balance: 0,
       },
     });
   } catch (error) {
@@ -115,6 +116,7 @@ export const signIn = async (req: Request, res: Response) => {
         phone: user.phone,
         referralCode: user.referralCode,
         referrals: user.referrals,
+        balance: user.balance,
       },
     });
   } catch (error) {

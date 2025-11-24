@@ -1,6 +1,5 @@
 import { useState } from 'react';
-// import s from './SlotMachine.module.scss';
-import s from './SlotMashine.module.scss'
+import s from './SlotMashine.module.scss';
 
 const symbols = ['🍒', '🍋', '⭐', '🍇', '🍉', '7️⃣'];
 

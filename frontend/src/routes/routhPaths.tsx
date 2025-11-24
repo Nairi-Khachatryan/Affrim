@@ -19,4 +19,5 @@ export const ROUTES = {
   CHANGE_PASSWORD: '/change-password',
   ABOUT_OUR_PROJECT: '/about-our-project',
   WIDTDRAW_PASSWORD: '/widtdraw-password',
+  MARKET_ITEM_MORE_INFO: '/market-item-more-info',
 } as const;

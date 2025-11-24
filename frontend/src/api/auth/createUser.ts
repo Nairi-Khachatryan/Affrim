@@ -18,6 +18,7 @@ type createUserResponce = {
     id: string;
     referralCode: string;
     referrals: Array<string>;
+    balance: number;
   };
 };
 

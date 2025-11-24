@@ -21,6 +21,7 @@ import { Home } from '../pages/Home/Home';
 import { Team } from '../pages/team/Team';
 import { Slot } from '../pages/slot/Slot';
 import { ROUTES } from './routhPaths';
+import { MarketItemMoreInfo } from '../pages/market/marketItemMoreInfo/MarketItemMoreInfo';
 
 export const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.ADD_BANK_CARD,
             element: <AddBankCard />,
+          },
+          {
+            path: ROUTES.MARKET_ITEM_MORE_INFO,
+            element: <MarketItemMoreInfo />,
           },
         ],
       },

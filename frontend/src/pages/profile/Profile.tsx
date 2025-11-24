@@ -1,6 +1,6 @@
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { removeUser } from '../../features/user/userSlice';
 import { ROUTES } from '../../routes/routhPaths';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useNavigate } from 'react-router-dom';
 import { Card, Button, Row, Col } from 'antd';
 import s from './Profile.module.scss';
@@ -8,7 +8,7 @@ import s from './Profile.module.scss';
 export const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const userId = useAppSelector((state) => state.user.user.id);
+  const user = useAppSelector((state) => state.user.user);
 
   return (
     <div className={s.profile}>
@@ -18,7 +18,7 @@ export const Profile = () => {
         <Col xs={24} sm={8}>
           <Card className={s.infoCard}>
             <div className={s.infoLabel}>На счету</div>
-            <div className={s.infoValue}>0 ₽</div>
+            <div className={s.infoValue}>{user.balance} ₽</div>
           </Card>
         </Col>
         <Col xs={24} sm={8}>
@@ -37,7 +37,7 @@ export const Profile = () => {
 
       <Card className={s.idCard}>
         <h2>ID</h2>
-        <div>{userId}</div>
+        <div>{user.id}</div>
       </Card>
 
       <Row gutter={[16, 16]} className={s.buttonRow}>

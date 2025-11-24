@@ -1,13 +1,17 @@
-import React from 'react';
-import { Card, Col, Row } from 'antd';
-import ring from '../../assets/ring.webp';
 import headphones from '../../assets/headphones.jpg';
-import coffe from '../../assets/coffe.webp';
+import { ROUTES } from '../../routes/routhPaths';
+import { useNavigate } from 'react-router-dom';
 import shoes from '../../assets/shoes.avif';
+import coffe from '../../assets/coffe.webp';
+import ring from '../../assets/ring.webp';
 import bag from '../../assets/bag3.jpg';
+import { Card, Col, Row } from 'antd';
 import s from './Market.module.scss';
+import React from 'react';
 
 export const Market: React.FC = () => {
+  const navigate = useNavigate();
+
   const marketItems = [
     { name: 'Vip 1', img: bag, label: 'Travel', price: 100 },
     { name: 'Vip 2', img: headphones, label: 'Tech', price: 1000 },
@@ -20,7 +24,17 @@ export const Market: React.FC = () => {
     <div className={s.marketContainer}>
       <Row gutter={[16, 16]}>
         {marketItems.map((item, idx) => (
-          <Col key={idx} xs={24} sm={12} md={8} lg={6} xl={4}>
+          <Col
+            onClick={() =>
+              navigate(ROUTES.MARKET_ITEM_MORE_INFO, { state: { item } })
+            }
+            key={idx}
+            xs={24}
+            sm={12}
+            md={8}
+            lg={6}
+            xl={4}
+          >
             <Card hoverable className={s.marketCard}>
               {/* Label сверху */}
               <div className={s.marketLabel}>{item.label}</div>

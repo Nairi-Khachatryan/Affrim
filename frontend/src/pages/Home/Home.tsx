@@ -1,26 +1,24 @@
+import headphones from '../../assets/headphones.jpg';
 import { useAppSelector } from '../../app/hooks';
 import { ROUTES } from '../../routes/routhPaths';
 import { useNavigate } from 'react-router-dom';
-import s from './Home.module.scss';
-import { Carousel } from 'antd';
-import ring from '../../assets/ring.webp';
-import headphones from '../../assets/headphones.jpg';
 import coffe from '../../assets/coffe.webp';
 import shoes from '../../assets/shoes.avif';
-// import bag from '../../assets/bag3.jpg';
 import watch from '../../assets/watch.avif';
+import ring from '../../assets/ring.webp';
+import s from './Home.module.scss';
+import { Carousel } from 'antd';
 
 export const Home = () => {
   const navigate = useNavigate();
-  const ID = useAppSelector((user) => user.user.user.id);
-
+  const user = useAppSelector((user) => user.user.user);
   const carouselImages = [ring, headphones, coffe, shoes, watch];
 
   return (
     <div className={s.wrapper}>
       <div className={s.top}>
-        <h5>ID {ID}</h5>
-        <div className={s.balance}>Balance 0</div>
+        <h5>ID {user.id}</h5>
+        <div className={s.balance}>Balance {user.balance}</div>
       </div>
 
       <div className={s.carousel}>

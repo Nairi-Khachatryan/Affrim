@@ -9,6 +9,7 @@ interface UserState {
   phone: number | null;
   referralCode: string | null;
   referrals: Array<string>;
+  balance: number;
 }
 
 const initialState: UserState = {
@@ -18,6 +19,7 @@ const initialState: UserState = {
   phone: null,
   referralCode: null,
   referrals: [],
+  balance: 0,
 };
 
 const userSlice = createSlice({
@@ -38,6 +40,7 @@ const userSlice = createSlice({
           state.surname = action.payload.data.surname;
           state.referralCode = action.payload.data.referralCode;
           state.referrals = action.payload.data.referrals;
+          state.balance = action.payload.data.balance;
         }
       })
       .addCase(signInUser.fulfilled, (state, action) => {
@@ -48,6 +51,7 @@ const userSlice = createSlice({
           state.surname = action.payload.data.surname;
           state.referralCode = action.payload.data.referralCode;
           state.referrals = action.payload.data.referrals;
+          state.balance = action.payload.data.balance;
         }
       });
   },

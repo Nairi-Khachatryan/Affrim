@@ -16,6 +16,7 @@ type signInResponce = {
     id: string;
     referralCode: string;
     referrals: Array<string>;
+    balance: number;
   };
 };
 
