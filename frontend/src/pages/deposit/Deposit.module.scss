@@ -1,0 +1,57 @@
+.container {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.deposit {
+  width: 260px;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 15px;
+  transition: 0.2s;
+}
+
+.deposit:hover {
+  border-color: #1677ff;
+}
+
+.active {
+  border-color: #1677ff !important;
+  background: #f0f6ff;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.confirmBtn {
+  width: 250px;
+  height: 40px;
+  font-size: 16px;
+}

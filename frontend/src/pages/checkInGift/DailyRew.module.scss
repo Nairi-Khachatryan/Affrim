@@ -1,0 +1,62 @@
+.container {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.list {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.rewardCard {
+  width: 180px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  transition: 0.2s;
+}
+
+.day {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.amount {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1677ff;
+}
+
+.claimBtn {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.active {
+  border-color: #1677ff !important;
+  background: #f0f6ff;
+}
+
+.completed {
+  opacity: 0.5;
+}
+
+.collected {
+  margin-top: 10px;
+  font-size: 14px;
+  color: green;
+  font-weight: 600;
+}

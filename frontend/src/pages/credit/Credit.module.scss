@@ -1,0 +1,115 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  height: 100vh;
+}
+
+.banner {
+  background: linear-gradient(135deg, #1677ff, #4a8fff);
+  padding: 25px;
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+
+  h2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+}
+
+.infoCard {
+  padding: 20px;
+  border-radius: 12px;
+
+  ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 15px;
+    color: #555;
+  }
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.ok {
+  margin-top: 10px;
+  color: green;
+  font-weight: 600;
+}
+
+.loanTypes {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.typeCard {
+  width: 180px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #f3f3f3;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.typeCard:hover {
+  background: #e9e9e9;
+}
+
+.active {
+  background: #1677ff;
+  color: white;
+}
+
+.typeTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.amountList {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.amountItem {
+  padding: 10px 15px;
+  background: #eee;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.amountItem:hover {
+  background: #ddd;
+}
+
+.radio {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summaryCard {
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.total {
+  margin-top: 15px;
+  padding: 12px;
+  background: #f0f6ff;
+  border-radius: 8px;
+  font-size: 18px;
+}

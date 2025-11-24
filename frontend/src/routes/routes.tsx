@@ -1,7 +1,7 @@
 import { WidtdrawPassword } from '../pages/widtdrawPassword/WidtdrawPassword';
 import { ChangePassword } from '../pages/changePassword/ChangePassword';
 import { NotFoundPage } from '../components/notFoundPage/NotFoundPage';
-import { CheckInGift } from '../pages/checkInGift/CheckInGift';
+import { DailyRewardPage } from '../pages/checkInGift/DailyRewardPage';
 import { WitdrawList } from '../pages/WitdrawList/WitdrawList';
 import { AddBankCard } from '../pages/addBankCard/AddBankCard';
 import { Replenish } from '../pages/replenish/Replenish';
@@ -81,8 +81,8 @@ export const router = createBrowserRouter([
             element: <Slot />,
           },
           {
-            path: ROUTES.CHECK_IN_GIFT,
-            element: <CheckInGift />,
+            path: ROUTES.DAILY_REWARDS,
+            element: <DailyRewardPage />,
           },
           {
             path: ROUTES.WIDTDRAW,

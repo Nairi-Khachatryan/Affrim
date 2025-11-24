@@ -44,7 +44,7 @@ export const Home = () => {
           <img className={s.images} src="/salary.png" alt="withdraw" />
           <p>withdraw</p>
         </div>
-        <div onClick={() => navigate(ROUTES.CHECK_IN_GIFT)} className={s.item}>
+        <div onClick={() => navigate(ROUTES.DAILY_REWARDS)} className={s.item}>
           <img className={s.images} src="/check-in.png" alt="checkIn" />
           <p>check in gift</p>
         </div>
