@@ -39,6 +39,7 @@ export const signUp = async (req: Request, res: Response) => {
         : null) || req.socket.remoteAddress;
 
     const user = new User({
+      isAdmin: false,
       name,
       surname,
       phone,
@@ -110,6 +111,7 @@ export const signIn = async (req: Request, res: Response) => {
       success: true,
       message: 'User logged in successfully',
       data: {
+        isAdmin: user.isAdmin,
         name: user.name,
         surname: user.surname,
         id: user._id,

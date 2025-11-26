@@ -1,9 +1,13 @@
-import s from './Header.module.scss';
-import logo from '../../assets/logo.png';
-import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../routes/routhPaths';
+import { useAppSelector } from '../../app/hooks';
+import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/logo.png';
+import s from './Header.module.scss';
+import { Button } from 'antd';
 
 export const Header = () => {
+  const isAdmin = useAppSelector((state) => state.user.user.isAdmin);
+
   const navigate = useNavigate();
   return (
     <div className={s.header}>
@@ -15,6 +19,10 @@ export const Header = () => {
           className={s.logo}
         />
       </div>
+
+      {isAdmin && (
+        <Button onClick={() => navigate(ROUTES.ADMIN_PAGE)}>Admin</Button>
+      )}
     </div>
   );
 };

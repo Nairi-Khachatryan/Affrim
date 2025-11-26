@@ -10,6 +10,7 @@ type signInResponce = {
   success: boolean;
   message: string;
   data: {
+    isAdmin: false;
     name: string;
     surname: string;
     phone: number;

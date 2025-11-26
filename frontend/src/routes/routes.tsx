@@ -1,3 +1,4 @@
+import { MarketItemMoreInfo } from '../pages/market/marketItemMoreInfo/MarketItemMoreInfo';
 import { WidtdrawPassword } from '../pages/widtdrawPassword/WidtdrawPassword';
 import { ChangePassword } from '../pages/changePassword/ChangePassword';
 import { NotFoundPage } from '../components/notFoundPage/NotFoundPage';
@@ -21,7 +22,7 @@ import { Home } from '../pages/Home/Home';
 import { Team } from '../pages/team/Team';
 import { Slot } from '../pages/slot/Slot';
 import { ROUTES } from './routhPaths';
-import { MarketItemMoreInfo } from '../pages/market/marketItemMoreInfo/MarketItemMoreInfo';
+import { AdminPage } from '../pages/adminPage/AdminPage';
 
 export const router = createBrowserRouter([
   {
@@ -111,6 +112,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.MARKET_ITEM_MORE_INFO,
             element: <MarketItemMoreInfo />,
+          },
+          {
+            path: ROUTES.ADMIN_PAGE,
+            element: <AdminPage />,
           },
         ],
       },

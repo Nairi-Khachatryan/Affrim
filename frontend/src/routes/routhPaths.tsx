@@ -13,6 +13,7 @@ export const ROUTES = {
   DEPOSIT: '/deposit',
   WIDTDRAW: '/widthdraw',
   REPLENISH: '/replenish',
+  ADMIN_PAGE: '/admin-page',
   DAILY_REWARDS: 'daily-rewards',
   ADD_BANK_CARD: '/add-bank-card',
   WIDTDRAW_LIST: '/widtdraw-list',

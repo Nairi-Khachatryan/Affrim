@@ -12,6 +12,7 @@ type createUserResponce = {
   success: boolean;
   message: string;
   data?: {
+    isAdmin: false;
     name: string;
     surname: string;
     phone: number;

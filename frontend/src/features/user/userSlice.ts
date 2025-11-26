@@ -3,6 +3,7 @@ import { signInUser } from '../../api/auth/logInUser';
 import { createSlice } from '@reduxjs/toolkit';
 
 interface UserState {
+  isAdmin: false | true;
   id: string | null;
   name: string | null;
   surname: string | null;
@@ -13,6 +14,7 @@ interface UserState {
 }
 
 const initialState: UserState = {
+  isAdmin: false,
   id: null,
   name: null,
   surname: null,
@@ -41,6 +43,7 @@ const userSlice = createSlice({
           state.referralCode = action.payload.data.referralCode;
           state.referrals = action.payload.data.referrals;
           state.balance = action.payload.data.balance;
+          state.isAdmin = action.payload.data.isAdmin;
         }
       })
       .addCase(signInUser.fulfilled, (state, action) => {
@@ -52,6 +55,7 @@ const userSlice = createSlice({
           state.referralCode = action.payload.data.referralCode;
           state.referrals = action.payload.data.referrals;
           state.balance = action.payload.data.balance;
+          state.isAdmin = action.payload.data.isAdmin;
         }
       });
   },
