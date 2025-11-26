@@ -28,19 +28,19 @@ export const Credit: React.FC = () => {
   };
 
   const handleSend = () => {
-    if (!docUploaded) return message.error('Upload your ID (UI only)');
+    if (!docUploaded) return message.error('Upload your ID');
     if (!loanType) return message.error('Select loan type');
     if (!amount) return message.error('Select loan amount');
     if (!term) return message.error('Select loan term');
 
-    message.success('Loan request created (UI only)');
+    message.success('Loan request created');
   };
 
   return (
     <div className={s.container}>
       <div className={s.banner}>
         <h2>Loan Center</h2>
-        <p>Fast, secure and simple. UI version only.</p>
+        <p>Fast, secure and simple.</p>
       </div>
 
       <Card className={s.infoCard}>

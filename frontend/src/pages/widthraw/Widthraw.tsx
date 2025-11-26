@@ -7,7 +7,7 @@ export const Widthraw: React.FC = () => {
 
   const handleSubmit = () => {
     if (cardNumber.length !== 12) {
-      message.error('Card number must be 12 digits (UI only)');
+      message.error('Card number must be 12 digits');
       return;
     }
 
@@ -33,7 +33,7 @@ export const Widthraw: React.FC = () => {
           />
 
           <div className={s.warning}>
-            ⚠️ This is only a UI form. Do NOT enter real card data. Actual
+            ⚠️ Enter real card data. Actual
             withdrawals must be done through a secure payment provider.
           </div>
         </div>

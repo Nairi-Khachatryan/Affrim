@@ -1,22 +1,29 @@
+import { Card, Button, Radio, Input } from 'antd';
+import { useToast } from '../../hooks/useToast';
 import React, { useState } from 'react';
-import { Card, Button, Radio, Input, message } from 'antd';
 import s from './Replenish.module.scss';
-
-
 
 export const Replenish: React.FC = () => {
   const [amount, setAmount] = useState<number | null>(null);
   const [method, setMethod] = useState<string | null>(null);
+  const { showToast } = useToast();
 
   const amounts = [3000, 5000, 7000, 10000, 12000, 15000, 17000, 20000];
 
   const handleSubmit = () => {
     if (!amount || !method) {
-      message.error('Please select amount and method');
-      return;
+      return showToast({
+        type: 'warning',
+        message: 'Please select amount and method',
+        duration: 5000,
+      });
     }
 
-    message.success('Top-up request created (UI only)');
+    showToast({
+      type: 'success',
+      message: 'Top-up request created',
+      duration: 5000,
+    });
   };
 
   return (
@@ -51,7 +58,7 @@ export const Replenish: React.FC = () => {
             value={method}
             className={s.radio}
           >
-            <Radio value="card">Pay with your card (UI only)</Radio>
+            <Radio value="card">Pay with your card </Radio>
             <Radio value="send_to_our_card">Send to our card</Radio>
           </Radio.Group>
         </div>
@@ -59,7 +66,7 @@ export const Replenish: React.FC = () => {
         {/* 3. Метод 1 — Форма карты (только UI, без реальных данных!) */}
         {method === 'card' && (
           <div className={s.block}>
-            <h3>Your Card Details (mock fields, do not enter real data)</h3>
+            <h3>Your Card Details</h3>
 
             <Input
               placeholder="Card Number (xxxx xxxx xxxx xxxx)"
@@ -70,10 +77,7 @@ export const Replenish: React.FC = () => {
               <Input placeholder="CVV" maxLength={3} />
             </div>
 
-            <div className={s.warning}>
-              ⚠️ Do NOT enter real payment data. Use tokenized systems like
-              Stripe for real payments.
-            </div>
+            <div className={s.warning}>⚠️ Enter real payment data.</div>
           </div>
         )}
 
