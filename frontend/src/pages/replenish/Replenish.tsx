@@ -8,7 +8,7 @@ export const Replenish: React.FC = () => {
   const [amount, setAmount] = useState<number | null>(null);
   const [method, setMethod] = useState<string | null>(null);
 
-  const amounts = [3000, 5000, 7000, 10000];
+  const amounts = [3000, 5000, 7000, 10000, 12000, 15000, 17000, 20000];
 
   const handleSubmit = () => {
     if (!amount || !method) {
