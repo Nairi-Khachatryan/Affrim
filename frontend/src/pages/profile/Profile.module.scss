@@ -28,6 +28,10 @@
   .idCard {
     text-align: center;
     margin-bottom: 20px;
+
+    :active {
+      background-color: rgb(38, 28, 150);
+    }
   }
 
   .buttonRow {

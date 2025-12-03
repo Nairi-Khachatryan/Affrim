@@ -4,11 +4,20 @@ import { ROUTES } from '../../routes/routhPaths';
 import { useNavigate } from 'react-router-dom';
 import { Card, Button, Row, Col } from 'antd';
 import s from './Profile.module.scss';
+import { copyToClip } from '../../utils/copyToClipBoard';
+import { useToast } from '../../hooks/useToast';
 
 export const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user.user);
+  const { showToast } = useToast();
+
+  const handleCopy = () => {
+    copyToClip(user.id);
+
+    showToast({ type: 'success', message: 'ID copied to clipboard' });
+  };
 
   return (
     <div className={s.profile}>
@@ -35,7 +44,7 @@ export const Profile = () => {
         </Col>
       </Row>
 
-      <Card className={s.idCard}>
+      <Card onClick={handleCopy} className={s.idCard}>
         <h2>ID</h2>
         <div>{user.id}</div>
       </Card>
