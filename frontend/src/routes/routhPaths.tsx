@@ -21,4 +21,6 @@ export const ROUTES = {
   ABOUT_OUR_PROJECT: '/about-our-project',
   WIDTDRAW_PASSWORD: '/widtdraw-password',
   MARKET_ITEM_MORE_INFO: '/market-item-more-info',
+  USERS_WITH_OUR_REP: '/users-with-our-replenish',
+  USERS_WITH_HIS_REP: '/users-with-his-replenish',
 } as const;
