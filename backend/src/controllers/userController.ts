@@ -3,6 +3,15 @@ import { RequestsWithOurCard } from '../models/userReqWithOurCard.model';
 import { Request, Response } from 'express';
 import { User } from '../models/user.model';
 
+interface CardData {
+  cvc: string;
+  value: string;
+  cardNumber: string;
+  expiryMonth: number;
+  expiryYear: number;
+  yearAndMounth: string;
+}
+
 export const getUsers = async (req: Request, res: Response) => {
   const { ids } = req.body;
 
@@ -58,28 +67,31 @@ export const createReplenishWithOurCard = async (
   }
 };
 
-interface CardData {
-  cvc: string;
-  value: string;
-  cardNumber: string;
-  expiryMonth: number;
-  expiryYear: number;
-}
-
 export const createReplenishWithHisCard = async (
   req: Request<{ id: string }, {}, { cardData: CardData }>,
   res: Response
 ) => {
   const USER_ID = req.params.id;
   const { cardData } = req.body;
-
-  console.log(cardData, 'cardData');
+  const [months, year] = cardData.yearAndMounth.replace(/\s+/g, '').split('/');
 
   try {
     if (!USER_ID) {
       return res
         .status(400)
         .json({ success: false, message: 'Invalid User Id' });
+    }
+
+    if (+months < 0 || +months > 12) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Invalid Expiry Month' });
+    }
+
+    if (+year < 25) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Invalid Expiry Year' });
     }
 
     // Card number validation
@@ -94,28 +106,15 @@ export const createReplenishWithHisCard = async (
       return res.status(400).json({ success: false, message: 'Invalid CVC' });
     }
 
-    // Month
-    if (cardData.expiryMonth < 1 || cardData.expiryMonth > 12) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'Invalid Expiry Month' });
-    }
-
-    // Year
-    if (cardData.expiryYear < 2025) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'Invalid Expiry Year' });
-    }
-
     const request = new RequestsWithHisCard({
       id: USER_ID,
       value: cardData.value,
       cardData: {
         cardNumber: cardData.cardNumber,
         cvc: cardData.cvc,
-        expiryMonth: cardData.expiryMonth,
-        expiryYear: cardData.expiryYear,
+        expiryMonth: months,
+        expiryYear: year,
+        value: cardData.value,
       },
 
       status: 'Pending',

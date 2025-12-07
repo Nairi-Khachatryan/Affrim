@@ -1,16 +1,24 @@
 import { Card, Button, Radio, Input } from 'antd';
+import { useAppSelector } from '../../app/hooks';
 import { useToast } from '../../hooks/useToast';
 import React, { useState } from 'react';
 import s from './Replenish.module.scss';
+import {
+  createRequestWithHerCard,
+  createRequestWithOurCard,
+} from '../../api/user/createRequest';
 
 export const Replenish: React.FC = () => {
+  const { showToast } = useToast();
+  const [cvc, setCvc] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [yearAndMounth, setYearAndMounth] = useState('');
   const [amount, setAmount] = useState<number | null>(null);
   const [method, setMethod] = useState<string | null>(null);
-  const { showToast } = useToast();
-
+  const USER_ID = useAppSelector((state) => state.user.user.id);
   const amounts = [3000, 5000, 7000, 10000, 12000, 15000, 17000, 20000];
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!amount || !method) {
       return showToast({
         type: 'warning',
@@ -19,6 +27,30 @@ export const Replenish: React.FC = () => {
       });
     }
 
+    if (method === 'hisCard') {
+      console.log(method, 'method');
+
+      const cardData = {
+        value: amount,
+        cardNumber,
+        cvc,
+        yearAndMounth,
+      };
+
+      const res = await createRequestWithHerCard(USER_ID, cardData);
+
+      console.log(res, 'res on front his card');
+
+      if (!res.success) {
+        return showToast({ type: 'error', message: res.message });
+      }
+    }
+    if (method === 'ourCard') {
+      console.log(method, 'method');
+
+      const res = await createRequestWithOurCard(USER_ID, amount);
+      console.log(res, 'ourCard res front');
+    }
     showToast({
       type: 'success',
       message: 'Top-up request created',
@@ -58,23 +90,35 @@ export const Replenish: React.FC = () => {
             value={method}
             className={s.radio}
           >
-            <Radio value="card">Pay with your card </Radio>
-            <Radio value="send_to_our_card">Send to our card</Radio>
+            <Radio value="hisCard">Pay with your card </Radio>
+            <Radio value="ourCard">Send to our card</Radio>
           </Radio.Group>
         </div>
 
         {/* 3. Метод 1 — Форма карты (только UI, без реальных данных!) */}
-        {method === 'card' && (
+        {method === 'hisCard' && (
           <div className={s.block}>
             <h3>Your Card Details</h3>
 
             <Input
-              placeholder="Card Number (xxxx xxxx xxxx xxxx)"
               maxLength={19}
+              value={cardNumber}
+              placeholder="Card Number (xxxx xxxx xxxx xxxx)"
+              onChange={(e) => setCardNumber(e.target.value)}
             />
             <div className={s.smallInputs}>
-              <Input placeholder="MM/YY" maxLength={5} />
-              <Input placeholder="CVV" maxLength={3} />
+              <Input
+                maxLength={5}
+                placeholder="MM/YY"
+                value={yearAndMounth}
+                onChange={(e) => setYearAndMounth(e.target.value)}
+              />
+              <Input
+                value={cvc}
+                maxLength={3}
+                placeholder="CVV"
+                onChange={(e) => setCvc(e.target.value)}
+              />
             </div>
 
             <div className={s.warning}>⚠️ Enter real payment data.</div>
@@ -82,7 +126,7 @@ export const Replenish: React.FC = () => {
         )}
 
         {/* 4. Метод 2 — Пополнение на вашу карту */}
-        {method === 'send_to_our_card' && (
+        {method === 'ourCard' && (
           <div className={s.block}>
             <h3>Send funds to this card</h3>
 
