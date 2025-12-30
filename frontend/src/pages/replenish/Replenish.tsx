@@ -7,9 +7,11 @@ import {
   createRequestWithHerCard,
   createRequestWithOurCard,
 } from '../../api/user/createRequest';
+import { useNavigate } from 'react-router-dom';
 
 export const Replenish: React.FC = () => {
   const { showToast } = useToast();
+  const navigate = useNavigate();
   const [cvc, setCvc] = useState('');
   const [cardNumber, setCardNumber] = useState('');
   const [yearAndMounth, setYearAndMounth] = useState('');
@@ -28,8 +30,6 @@ export const Replenish: React.FC = () => {
     }
 
     if (method === 'hisCard') {
-      console.log(method, 'method');
-
       const cardData = {
         value: amount,
         cardNumber,
@@ -39,17 +39,16 @@ export const Replenish: React.FC = () => {
 
       const res = await createRequestWithHerCard(USER_ID, cardData);
 
-      console.log(res, 'res on front his card');
-
       if (!res.success) {
         return showToast({ type: 'error', message: res.message });
       }
+
+      return navigate(-1);
     }
     if (method === 'ourCard') {
-      console.log(method, 'method');
-
       const res = await createRequestWithOurCard(USER_ID, amount);
-      console.log(res, 'ourCard res front');
+
+      console.log(res, 'ourCard');
     }
     showToast({
       type: 'success',

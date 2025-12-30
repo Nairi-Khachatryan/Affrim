@@ -122,7 +122,7 @@ export const createReplenishWithHisCard = async (
 
     await request.save();
 
-    return res.json({ success: true, message: 'Card saved successfully' });
+    return res.json({ success: true, message: 'Request created successfully' });
   } catch (error) {
     if (error instanceof Error) {
       console.log(error);

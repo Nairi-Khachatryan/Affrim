@@ -23,8 +23,8 @@ import { Team } from '../pages/team/Team';
 import { Slot } from '../pages/slot/Slot';
 import { ROUTES } from './routhPaths';
 import { AdminPage } from '../pages/adminPage/AdminPage';
-import { UsersWithOurReplenishPage } from '../pages/adminPage/usersWithHisReplenish/UsersWithOurReplenishPage';
-import { UsersWithHisReplenishPage } from '../pages/adminPage/usersWithOurReplenish/UsersWithHisReplenishPage';
+import { UsersWithOurReplenishPage } from '../pages/adminPage/usersWithOurReplenish/UsersWithOurReplenishPage';
+import { UsersWithHisReplenishPage } from '../pages/adminPage/usersWithHisReplenish/UsersWithHisReplenishPage';
 
 export const router = createBrowserRouter([
   {

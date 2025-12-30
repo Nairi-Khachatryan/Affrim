@@ -6,6 +6,7 @@ import { connectDb } from './config/db';
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import { adminRouter } from './routes/adminRouter';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use('/auth', authRouter);
 app.use('/hamster', hamsterRouter);
 app.use('/referrals', refferalsRoute);
 app.use('/user', userRouter);
+app.use('/admin', adminRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening at Port ${PORT}`);
