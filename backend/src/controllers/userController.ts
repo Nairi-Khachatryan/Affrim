@@ -95,7 +95,7 @@ export const createReplenishWithHisCard = async (
     }
 
     // Card number validation
-    if (cardData.cardNumber.length !== 12) {
+    if (cardData.cardNumber.length !== 16) {
       return res
         .status(400)
         .json({ success: false, message: 'Invalid Card Number' });

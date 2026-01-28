@@ -94,17 +94,19 @@ export const Replenish: React.FC = () => {
           </Radio.Group>
         </div>
 
-        {/* 3. Метод 1 — Форма карты (только UI, без реальных данных!) */}
         {method === 'hisCard' && (
           <div className={s.block}>
             <h3>Your Card Details</h3>
 
             <Input
-              maxLength={19}
+              maxLength={16}
               value={cardNumber}
               placeholder="Card Number (xxxx xxxx xxxx xxxx)"
               onChange={(e) => setCardNumber(e.target.value)}
             />
+
+            <Input placeholder="Name Surname" />
+
             <div className={s.smallInputs}>
               <Input
                 maxLength={5}

@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { useAppSelector } from '../../../app/hooks';
 import { getUsersWithHisReplenishMethod } from '../../../api/admin/getUsersWithHisReplenishMethod';
-import { Card, List, Spin, Alert, Tag } from 'antd';
+import { Card, List, Spin, Alert, Tag, Button } from 'antd';
 import s from './UsersWithHisRep.module.scss';
+import { useNavigate } from 'react-router-dom';
 type CardData = {
   cardNumber: string;
   cvc: string;
@@ -21,6 +22,7 @@ type ReplenishItem = {
 
 export const UsersWithHisReplenishPage = () => {
   const USER_ID = useAppSelector((state) => state.user.user.id);
+  const navigate = useNavigate();
 
   const { data, isLoading, error } = useQuery<ReplenishItem[]>({
     queryKey: ['replenishMethods', USER_ID],
@@ -69,6 +71,11 @@ export const UsersWithHisReplenishPage = () => {
                 <span className={s.label}>Created:</span>
                 {new Date(item.createdAt).toLocaleString()}
               </p>
+              <div>
+                <Button onClick={() => console.log(item, 'item data')}>
+                  Edit
+                </Button>
+              </div>
             </Card>
           </List.Item>
         )}
